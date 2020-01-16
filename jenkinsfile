@@ -9,7 +9,7 @@ pipeline {
                        #kubectl apply -f
                         #kubectl run hw3 --image=training/webapp:latest --labels="ver=1,app=opsschool,env=prod"
                    }catch(error){
-                       echo catch
+                       echo catch1
                         #kubectl create -f
                    }
                 }
