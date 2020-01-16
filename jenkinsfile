@@ -1,15 +1,18 @@
-
- 
-        stage("Get image") {
+pipeline {
+    agent any
+        stage("Deploy") {
             steps {
                 script {
                    #withDockerRegistry(credentialsId: 'dockerhub.carmitbe1', url: 'docker pull training/webapp:latest')
                    try{
-                       kubectl apply -f
+                       echo try
+                       #kubectl apply -f
                         #kubectl run hw3 --image=training/webapp:latest --labels="ver=1,app=opsschool,env=prod"
                    }catch(error){
-                        kubectl create -f
+                       echo catch
+                        #kubectl create -f
                    }
                 }
             }
         }
+}
