@@ -5,7 +5,7 @@ pipeline {
                 script {
                    #withDockerRegistry(credentialsId: 'dockerhub.carmitbe1', url: 'docker pull training/webapp:latest')
                    try{
-                       echo try1
+                       echo try2
                        #kubectl apply -f
                         #kubectl run hw3 --image=training/webapp:latest --labels="ver=1,app=opsschool,env=prod"
                    }catch(error){
