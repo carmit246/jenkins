@@ -6,11 +6,11 @@ pipeline {
                 script {
                 
                    try{
-                       echo try1
-                   
+                       echo "try"
+                        //kubectl apply -f
                    }catch(error){
-                       echo catch1
-                     
+                       echo "catch"
+                        //kubectl create -f
                    }
                 }
             }
