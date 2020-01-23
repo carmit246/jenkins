@@ -12,11 +12,10 @@
                    try{
                        
                         //kubernetesDeploy configs: 'ttt.yml', kubeConfig: [path: ''], kubeconfigId: 'k8s-test', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-                        kubectl apply -f pod.yml
+                        kubectl apply -f pod.yml > /home/ubuntu/startPod.log
                         echo "try"
                    }catch(error){
                        echo "catch"
-                       echo error
                         //kubectl create -f
                    }
                 }
