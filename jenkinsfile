@@ -3,9 +3,8 @@
     //stages{
     node("slave0"){
         stage("Build") {
-             steps {
                 echo "build"
-                }
+                
         }
         stage("Deploy") {                
             script {
