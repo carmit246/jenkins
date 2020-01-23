@@ -1,7 +1,7 @@
-pipeline {
-   agent any 
-    stages{
-        node("slave0"){
+//pipeline {
+  // agent any 
+    //stages{
+    node("slave0"){
         stage("Build") {
              steps {
                 echo "build"
@@ -31,6 +31,6 @@ pipeline {
              }
             }
         }
-    }
+    //}
     
-}
+//}
