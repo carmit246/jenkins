@@ -1,5 +1,5 @@
 pipeline {
-    agent slave1
+    node("slave0"){
     stages{
         stage("Build") {
              steps {
@@ -29,5 +29,6 @@ pipeline {
             //curl...
              }
         }
+    }
     }
 }
