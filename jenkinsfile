@@ -30,7 +30,7 @@ EOF
                    try{
                        
                         //kubernetesDeploy configs: 'ttt.yml', kubeConfig: [path: ''], kubeconfigId: 'k8s-test', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-                        kubectl apply -f /home/ubuntu/pod.yml //> /home/ubuntu/startPod.log
+                        sh """kubectl apply -f /home/ubuntu/pod.yml > /home/ubuntu/startPod.log"""
                         echo "try"
                    }catch(error){
                        echo "catch"
@@ -40,7 +40,7 @@ EOF
             
         }
         stage("Test") {
-            kubectl get pods
+            sh """kubectl get pods > /home/ubuntu/getPods.log"""
             echo "test"
             //curl...
              
