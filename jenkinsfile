@@ -1,6 +1,7 @@
 pipeline {
-    node("slave0"){
+    
     stages{
+        node("slave0"){
         stage("Build") {
              steps {
                 echo "build"
@@ -28,7 +29,8 @@ pipeline {
             echo "test"
             //curl...
              }
+            }
         }
     }
-    }
+    
 }
