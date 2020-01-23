@@ -1,7 +1,7 @@
 //pipeline {
   // agent any 
     //stages{
-    node("slave1"){
+    node("Slave1"){
         stage("Build") {
                 echo "build"
                 
