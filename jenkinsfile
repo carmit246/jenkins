@@ -7,9 +7,8 @@
                 echo "build"
                 }
         }
-        stage("Deploy") {
-            steps {
-                script {
+        stage("Deploy") {                
+            script {
                 
                    try{
                        
@@ -21,14 +20,13 @@
                         //kubectl create -f
                    }
                 }
-            }
+            
         }
         stage("Test") {
-             steps {
             //kubectl get pods
             echo "test"
             //curl...
-             }
+             
             }
         }
     //}
