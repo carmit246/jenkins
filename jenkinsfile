@@ -1,19 +1,29 @@
 pipeline {
-    agent any
+    agent slave1
     stages{
+        stage("Build") {
+            echo "build"
+        }
         stage("Deploy") {
             steps {
                 script {
                 
                    try{
-                       echo "try"
-                        //kubectl apply -f
+                       
+                        //kubernetesDeploy configs: 'ttt.yml', kubeConfig: [path: ''], kubeconfigId: 'k8s-test', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+                        kubectl apply -f pod.yml
+                        echo "try"
                    }catch(error){
                        echo "catch"
                         //kubectl create -f
                    }
                 }
             }
+        }
+        stage("Test") {
+            //kubectl get pods
+            echo "test"
+            //curl...
         }
     }
 }
