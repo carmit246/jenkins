@@ -1,7 +1,7 @@
 //pipeline {
   // agent any 
     //stages{
-    node("slave0"){
+    node("slave1"){
         stage("Build") {
                 echo "build"
                 
@@ -16,6 +16,7 @@
                         echo "try"
                    }catch(error){
                        echo "catch"
+                       echo error
                         //kubectl create -f
                    }
                 }
