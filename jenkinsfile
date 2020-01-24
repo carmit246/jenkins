@@ -26,12 +26,12 @@ node("Slave1"){
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hw3
+  name: opsschool-project
   labels:
-    app: hw3
+    app: opsschool-project
 spec:
   containers:
-  - image: carmitbe1/opsschool-project
+  - image: carmitbe1/opsschool-project:1
       name: opsschool-project
       ports:
       - containerPort: 8080
