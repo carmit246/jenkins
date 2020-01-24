@@ -31,8 +31,8 @@ metadata:
     app: hw3
 spec:
   containers:
-  - image: opsschool-project/flask-http
-      name: webapp
+  - image: carmitbe1/opsschool-project
+      name: opsschool-project
       ports:
       - containerPort: 8080
         name: http
