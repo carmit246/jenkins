@@ -5,7 +5,7 @@ node("Slave1"){
   
   stage("Create Docker Image") {
     //Dockerfile
-    app = docker.build("opsschool-project/flask-http")
+    app = docker.build("carmitbe1/opsschool-project")
   }
 
   stage("verify Docker Image") 
