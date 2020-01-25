@@ -34,9 +34,24 @@ spec:
   - name: opsschool-project
     image: carmitbe1/opsschool-project
     ports:
-    - containerPort: 8080
+    - containerPort: 80
       name: http
       protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:  
+  name: opsschool-project
+spec:
+  selector:    
+    app: opsschool-project
+  type: NodePort
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: 30036
+    protocol: TCP
 EOF
             """
       echo "build"           
