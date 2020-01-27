@@ -1,4 +1,4 @@
-node("PROJECT_SLAVE_3.81.19.156"){
+node("project-slave"){
   stage("Get Repo") {
     checkout scm
   }
