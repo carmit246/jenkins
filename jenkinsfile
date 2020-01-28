@@ -24,12 +24,13 @@ node("project-slave"){
     sh """
       tee /home/ubuntu/pod.yml <<-'EOF'
 apiVersion: v1
-kind: Pod
+kind: ReplicaSet
 metadata:
   name: opsschool-project
   labels:
     app: opsschool-project
 spec:
+  replicas: 2
   containers:
   - name: opsschool-project
     image: carmitbe1/opsschool-project
