@@ -23,7 +23,7 @@ node("project-slave"){
   stage("Build") {
     sh """
       tee /home/ubuntu/pod.yml <<-'EOF'
-apiVersion: v1
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: opsschool-project
@@ -46,7 +46,7 @@ metadata:
 spec:
   selector:    
     app: opsschool-project
-  type: NodePort
+  type: LoadBalancer
   ports:  
   - name: http
     port: 80
