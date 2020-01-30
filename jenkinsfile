@@ -31,13 +31,19 @@ metadata:
     app: opsschool-project
 spec:
   replicas: 2
-  containers:
-  - name: opsschool-project
-    image: carmitbe1/opsschool-project
-    ports:
-    - containerPort: 80
-      name: http
-      protocol: TCP
+  selector:
+    matchLabels:
+      app: opsschool-project
+  template:
+    metadata:
+      labels:
+        app: opsschool-project
+    spec:     
+      containers:
+      - name: opsschool-project
+        image: carmitbe1/opsschool-project
+        ports:
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
