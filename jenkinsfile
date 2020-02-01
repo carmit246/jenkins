@@ -83,8 +83,9 @@ EOF
     echo "lb: ${lb}"
     //load_balancer = sh(script: "kubectl get svc| grep project| awk '{print $3}", returnStdout: true)
     url = "http://${lb}"
-    echo "test"
+
     int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
+    echo "test status: ${status}"
     if (status != 200 && status != 201) {
       error("Returned status code = $status when calling $url")
 }
