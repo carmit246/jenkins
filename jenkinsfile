@@ -86,11 +86,11 @@ EOF
     int status = sh(script: "curl -sLI -w '%{http_code}' http://${lb} -o /dev/null", returnStdout: true)
     
     if (status != 200 && status != 201) {
-      slackSend color: "red", message: "Build Finished with Error: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+      slackSend color: "red", message: "CI/CD flow Finished with Error: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
       error("Returned status code = $status when calling $lb")
 }
     echo "test status: ${status}"
-    slackSend color: "green", message: "Build Finished Successfully: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+    slackSend color: "green", message: "CI/CD flow Finished Successfully: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Application is available on http://${lb}."
     //test_result = sh """curl http://load-balancer"""
     
   }
