@@ -76,7 +76,16 @@ EOF
   }
   stage("Test") {
     sh """kubectl get pods > /home/ubuntu/getPods.log"""
+    sh """kubectl get svc| grep project| awk '{print $3}' > /home/ubuntu/lb.txt""" 
+    load_balancer = sh(script: "kubectl get svc| grep project| awk '{print $3}", returnStdout: true)
+    url = "http://${load_balancer}"
     echo "test"
-    //curl...       
+    int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
+    if (status != 200 && status != 201) {
+    error("Returned status code = $status when calling $url")
+}
+
+    //test_result = sh """curl http://load-balancer"""
+    
   }
 }
