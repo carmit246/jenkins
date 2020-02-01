@@ -76,7 +76,7 @@ EOF
   }
   stage("Test") {
     sh """kubectl get pods > /home/ubuntu/getPods.log"""
-    var lb = sh """kubectl get svc| grep opsschool-project| awk '{print $4}'"""
+    var lb = sh """kubectl get svc| grep opsschool-project| awk \'\{print \$4\}\'"""
     echo "lb: ${lb}"
     //load_balancer = sh(script: "kubectl get svc| grep project| awk '{print $3}", returnStdout: true)
     url = "http://${lb}"
