@@ -20,7 +20,7 @@ node("project-slave"){
     }
   }
 
-  stage("Build") {
+  stage("Prepare K8S yaml file") {
     sh """
       tee /home/ubuntu/pod.yml <<-'EOF'
 apiVersion: apps/v1
@@ -63,7 +63,7 @@ EOF
             """
       echo "build"           
   }
-  stage("Deploy") {                
+  stage("Deploy in K8s") {                
     script {
       try{
         //kubernetesDeploy configs: 'ttt.yml', kubeConfig: [path: ''], kubeconfigId: 'k8s-test', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
@@ -76,14 +76,15 @@ EOF
   }
   stage("Test") {
     sh """kubectl get pods > /home/ubuntu/getPods.log"""
-    //sh """kubectl get svc| grep project| awk '{print $3}' > /home/ubuntu/lb.txt""" 
+    var lb = sh """kubectl get svc| grep opsschool-project| awk '{print $4}'"""
+    echo "lb: ${lb}"
     //load_balancer = sh(script: "kubectl get svc| grep project| awk '{print $3}", returnStdout: true)
-    //url = "http://${load_balancer}"
+    url = "http://${lb}"
     echo "test"
-    //int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
-    //if (status != 200 && status != 201) {
-    //error("Returned status code = $status when calling $url")
-//}
+    int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
+    if (status != 200 && status != 201) {
+      error("Returned status code = $status when calling $url")
+}
 
     //test_result = sh """curl http://load-balancer"""
     
