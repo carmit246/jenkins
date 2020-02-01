@@ -76,7 +76,7 @@ EOF
   }
   stage("Test") {
     sh """kubectl get pods > /home/ubuntu/getPods.log"""
-    sh """/home/ubuntu/workspace/pl/lb.txt >> /home/ubuntu/lb.txt"""
+    sh """/home/ubuntu/workspace/pl/lb.sh >> /home/ubuntu/lb.txt"""
     //var lb = sh """kubectl get svc| grep opsschool-project| awk '{print $4}'"""
     lb = readFile('/home/ubuntu/lb.txt').trim()
 
