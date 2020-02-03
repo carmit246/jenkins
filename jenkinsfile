@@ -11,6 +11,14 @@ node("project-slave"){
   stage("verify Docker Image") 
   {
     sh "docker images"
+    //docker.image('carmitbe1/opsschool-project').withRun('-p 80:80'){c -> 
+    //int container_status = sh """curl -i http://localhost"""
+    //if (container_status != 200 && container_status != 201) {
+    //  slackSend color: "red", message: "docker build finished with error: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+    //  error("docker build returned status code = $container_status")
+    //}
+    //echo "docker build test status: ${container_status}"
+    //} 
   }
 
   stage("Push to DockerHub") {
@@ -90,7 +98,7 @@ EOF
       error("Returned status code = $status when calling $lb")
 }
     echo "test status: ${status}"
-    slackSend color: "green", message: "CI/CD flow Finished Successfully: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Application is available on http://${lb}."
+    slackSend color: "GREEN", message: "CI/CD flow Finished Successfully: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Application is available on http://${lb}."
     //test_result = sh """curl http://load-balancer"""
     
   }
